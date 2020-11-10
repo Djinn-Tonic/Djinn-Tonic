@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_spawnIndicatorPrefab: {fileID: 5432803801992466799, guid: c3dbfdcd2c9f0a648b6ef19a482b235e,
     type: 3}
-  m_xOffsetFromEdge: 2.5
-  m_yOffsetFromPlatform: 2
+  m_enemyTriggerPrefab: {fileID: 6929161355405897270, guid: 67fcb12663bd604448a0d0d80f9807a4,
+    type: 3}
+  m_enemySpawnXOffsetFromEdge: 4
+  m_enemySpawnYOffsetFromPlatform: 1.75
+  m_enemyTriggerXOffsetFromEdge: 1.5
+  m_enemyInteractable: 1
 --- !u!1001 &5743301454845555795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28,20 +32,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 913065867579054981, guid: 3a8d507ac1eac0846a025a35955c5b3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 913065867579054985, guid: 3a8d507ac1eac0846a025a35955c5b3f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9768815
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 913065867579054985, guid: 3a8d507ac1eac0846a025a35955c5b3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 913065867579054985, guid: 3a8d507ac1eac0846a025a35955c5b3f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 913065867579054985, guid: 3a8d507ac1eac0846a025a35955c5b3f,
         type: 3}
