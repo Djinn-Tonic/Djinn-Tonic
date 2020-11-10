@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public GameObject m_platform;
+
     [SerializeField]
     private float m_movementSpeed;
     [SerializeField]
@@ -15,7 +17,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int m_health;
 
-    private bool m_onGround;
     private bool m_onLadder;
     private int m_pickUpCount;
     private Rigidbody m_rigidBody;
@@ -25,9 +26,9 @@ public class Player : MonoBehaviour
         m_rigidBody = GetComponent<Rigidbody>();
         Assert.IsNotNull(m_rigidBody);
 
-        m_onGround = false;
         m_onLadder = false;
         m_pickUpCount = 0;
+        m_platform = null;
     }
 
     // Start is called before the first frame update
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            m_onGround = true;
+            m_platform = other.gameObject;
         }
     }
 
@@ -128,10 +129,10 @@ public class Player : MonoBehaviour
         {
             m_rigidBody.velocity += Vector3.down * m_ladderMovementSpeed;
         }
-		if (m_onGround && Input.GetKeyDown(KeyCode.W))
+		if (m_platform && Input.GetKeyDown(KeyCode.W))
         {
             m_rigidBody.AddForce(Vector3.up * m_jumpSpeed, ForceMode.Impulse);
-            m_onGround = false;
+            m_platform = null;
         }
 
         transform.position += m_rigidBody.velocity * Time.deltaTime;
