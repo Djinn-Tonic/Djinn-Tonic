@@ -64,6 +64,14 @@ public class Player : MonoBehaviour
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             }
         }
+
+		if(other.gameObject.CompareTag("Ghoul"))
+		{
+			
+				SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+		}
+
         if(other.gameObject.CompareTag("PickUp"))
         {
             ++m_pickUpCount;
@@ -120,7 +128,7 @@ public class Player : MonoBehaviour
         {
             m_rigidBody.velocity += Vector3.down * m_ladderMovementSpeed;
         }
-        if (m_onGround && Input.GetKeyDown(KeyCode.Space))
+		if (m_onGround && Input.GetKeyDown(KeyCode.W))
         {
             m_rigidBody.AddForce(Vector3.up * m_jumpSpeed, ForceMode.Impulse);
             m_onGround = false;
