@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public GameObject m_platform;
+    public Platform m_platform;
 
     [SerializeField]
     private float m_movementSpeed;
@@ -39,9 +39,9 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Platform"))
         {
-            m_platform = other.gameObject;
+            m_platform = other.gameObject.GetComponent<Platform>();
         }
     }
 

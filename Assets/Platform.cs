@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Platform : MonoBehaviour
 {
@@ -13,8 +14,7 @@ public class Platform : MonoBehaviour
     private GameObject m_leftSpawn;
     private GameObject m_rightSpawn;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_leftSpawn = Instantiate(m_spawnIndicatorPrefab, new Vector3(transform.position.x + transform.localScale.x / 2.0f - m_xOffsetFromEdge,
             transform.position.y + m_yOffsetFromPlatform, transform.position.z), Quaternion.identity);
@@ -22,6 +22,10 @@ public class Platform : MonoBehaviour
         m_rightSpawn = Instantiate(m_spawnIndicatorPrefab, new Vector3(transform.position.x - transform.localScale.x / 2.0f + m_xOffsetFromEdge,
             transform.position.y + m_yOffsetFromPlatform, transform.position.z), Quaternion.identity);
     }
+
+    // Start is called before the first frame update
+    void Start()
+    {}
 
     // Update is called once per frame
     void Update()
@@ -31,5 +35,10 @@ public class Platform : MonoBehaviour
 
         m_rightSpawn.transform.position = new Vector3(transform.position.x - transform.localScale.x / 2.0f + m_xOffsetFromEdge,
             transform.position.y + m_yOffsetFromPlatform, transform.position.z);
+    }
+
+    public GameObject getRandomSpawn()
+    {
+        return Random.Range(0, 1) == 0 ? m_leftSpawn : m_rightSpawn;
     }
 }
