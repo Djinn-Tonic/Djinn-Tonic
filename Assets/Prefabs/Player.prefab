@@ -105,8 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e979539c2188c4e889530fce55b231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_platform: {fileID: 0}
   m_movementSpeed: 3.5
-  m_ladderMovementSpeed: 1
+  m_horizontalLadderMoveSpeed: 2.5
+  m_verticalLadderMoveSpeed: 1
   m_jumpSpeed: 6
   m_health: 3
 --- !u!54 &5305447548985513442

@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float m_movementSpeed;
     [SerializeField]
-    private float m_ladderMovementSpeed;
+    private float m_horizontalLadderMoveSpeed;
+    [SerializeField]
+    private float m_verticalLadderMoveSpeed;
     [SerializeField]
     private float m_jumpSpeed;
     [SerializeField]
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour
         {
             m_rigidBody.velocity = new Vector3(0.0f, 0.0f, m_rigidBody.velocity.z);
             m_rigidBody.useGravity = false;
-            movementSpeed = m_ladderMovementSpeed;
+            movementSpeed = m_horizontalLadderMoveSpeed;
         }
         else
         {
@@ -113,11 +115,11 @@ public class Player : MonoBehaviour
         }
         if(m_onLadder && Input.GetKey(KeyCode.W))
         {
-            m_rigidBody.velocity += Vector3.up * m_ladderMovementSpeed;
+            m_rigidBody.velocity += Vector3.up * m_verticalLadderMoveSpeed;
         }
         if(m_onLadder && Input.GetKey(KeyCode.S))
         {
-            m_rigidBody.velocity += Vector3.down * m_ladderMovementSpeed;
+            m_rigidBody.velocity += Vector3.down * m_verticalLadderMoveSpeed;
         }
         if (m_platform && Input.GetKeyDown(KeyCode.Space))
         {
