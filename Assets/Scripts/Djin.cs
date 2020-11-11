@@ -50,7 +50,8 @@ public class Djin : MonoBehaviour
         }
 
         Assert.IsNotNull(m_player);
-        if (m_platform && m_player.m_platform && m_player.m_platform.transform.position != m_platform.transform.position)
+        if (m_platform && m_player.m_platform && m_player.m_platform.isEnemyInteractable() &&
+            m_player.m_platform.transform.position != m_platform.transform.position)
         {
             transform.position = m_player.m_platform.getRandomSpawn().transform.position;
             m_rigidBody.velocity = new Vector3(Random.Range(0, 100) < 50 ? -m_movementSpeed : m_movementSpeed, 0.0f, 0.0f);

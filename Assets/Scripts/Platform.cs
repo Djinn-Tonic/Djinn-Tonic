@@ -22,6 +22,11 @@ public class Platform : MonoBehaviour
     [SerializeField]
     private bool m_enemyInteractable;
 
+    public bool isEnemyInteractable()
+    {
+        return m_enemyInteractable;
+    }
+
     void Awake()
     {
         Assert.IsNotNull(m_spawnIndicatorPrefab);
