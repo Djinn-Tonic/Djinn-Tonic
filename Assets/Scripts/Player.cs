@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    private GameManager m_gameManager;
     public Platform m_platform;
     [SerializeField]
     private float m_movementSpeed;
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour
     {
         m_rigidBody = GetComponent<Rigidbody>();
         Assert.IsNotNull(m_rigidBody);
+
+        m_gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        Assert.IsNotNull(m_gameManager);
 
         m_onLadder = false;
         m_pickUpCount = 0;
@@ -68,6 +72,7 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("PickUp"))
         {
             ++m_pickUpCount;
+            m_gameManager.onPlayerPickupCollection(m_pickUpCount);
             Destroy(other.gameObject);
             Debug.Log("PickUp Count: " + m_pickUpCount);
         }
