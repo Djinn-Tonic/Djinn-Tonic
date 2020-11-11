@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1189943183
+--- !u!114 &404009001907851938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4836745808551931862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7bfb0f69e9dd01458ebe7246a2f0640, type: 3}
+  m_Script: {fileID: 11500000, guid: 77f6c51fc93c0a14186f17e732bf3696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnIndicatorPrefab: {fileID: 5432803801992466799, guid: c3dbfdcd2c9f0a648b6ef19a482b235e,
     type: 3}
   m_enemyTriggerPrefab: {fileID: 6929161355405897270, guid: 67fcb12663bd604448a0d0d80f9807a4,
     type: 3}
-  m_enemySpawnXOffsetFromEdge: 4
-  m_enemySpawnYOffsetFromPlatform: 1.75
-  m_enemyTriggerXOffsetFromEdge: 1.5
+  m_enemySpawnXOffsetFromEdge: 3.5
+  m_enemySpawnYOffsetFromPlatform: 1.5
+  m_enemyTriggerXOffsetFromEdge: 2
   m_enemyInteractable: 1
 --- !u!1001 &5743301454845555795
 PrefabInstance:

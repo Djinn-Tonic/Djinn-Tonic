@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public Platform m_platform;
     [SerializeField]
     private float m_movementSpeed;
     [SerializeField]
@@ -15,7 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int m_health;
 
-    private bool m_onGround;
     private bool m_onLadder;
     private int m_pickUpCount;
     private Rigidbody m_rigidBody;
@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         m_rigidBody = GetComponent<Rigidbody>();
         Assert.IsNotNull(m_rigidBody);
 
-        m_onGround = false;
         m_onLadder = false;
         m_pickUpCount = 0;
     }
@@ -38,9 +37,9 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Platform"))
         {
-            m_onGround = true;
+            m_platform = other.gameObject.GetComponent<Platform>();
         }
     }
 
@@ -120,10 +119,9 @@ public class Player : MonoBehaviour
         {
             m_rigidBody.velocity += Vector3.down * m_ladderMovementSpeed;
         }
-        if (m_onGround && Input.GetKeyDown(KeyCode.Space))
+        if (m_platform && Input.GetKeyDown(KeyCode.Space))
         {
             m_rigidBody.AddForce(Vector3.up * m_jumpSpeed, ForceMode.Impulse);
-            m_onGround = false;
         }
 
         transform.position += m_rigidBody.velocity * Time.deltaTime;

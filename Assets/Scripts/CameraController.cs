@@ -7,7 +7,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private Vector3 m_startingPosition;
-    [SerializeField]
     private GameObject m_player;
     [SerializeField]
     private float m_movementSpeed;
@@ -17,12 +16,15 @@ public class CameraController : MonoBehaviour
     {
         m_velocity = new Vector3();
         transform.position = m_startingPosition;
+
+        m_player = GameObject.FindGameObjectWithTag("Player");
+        Assert.IsNotNull(m_player);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Assert.IsNotNull(m_player);
+
     }
 
     // Update is called once per frame

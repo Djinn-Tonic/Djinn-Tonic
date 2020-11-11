@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 7473017721868258899}
   - component: {fileID: 7473017721868258892}
   - component: {fileID: 7473017721868258893}
-  - component: {fileID: 7473017721868258894}
   - component: {fileID: 7473017721868258897}
+  - component: {fileID: 6371012338088592477}
   m_Layer: 0
   m_Name: Djin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,23 +93,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7473017721868258894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7473017721868258895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde8eba12b6e74741a383aa82c177ee2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_player: {fileID: 5305447548985513465, guid: 3715f70a71d2c344d93ab3b406b4b505,
-    type: 3}
-  m_platform: {fileID: 0}
-  m_movementSpeed: 2
-  m_rayCollisionDistance: 10
 --- !u!54 &7473017721868258897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +109,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
+--- !u!114 &6371012338088592477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473017721868258895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0a7553179d8c1478c2e327f211bd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_platform: {fileID: 0}
+  m_movementSpeed: 5
+  m_rayCollisionDistance: 10
