@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Change_Position : MonoBehaviour
+public class Cloud_Curse : MonoBehaviour
 {
-	//Position
+
 	public GameObject Point1;
 	public GameObject Point2;
 	int Target_Point = 0;
@@ -29,48 +29,23 @@ public class Change_Position : MonoBehaviour
     void Start()
     {
 		Position_Timer = 2f;
-		this.gameObject.transform.position = new Vector3 (Point2.transform.position.x, Point2.transform.position.y, Point2.transform.position.z);
-		m_rigidBody.velocity = new Vector3(m_movementSpeed, 0.0f, 0.0f);
-
+		//this.gameObject.transform.position = new Vector3 (Point2.transform.position.x, Point2.transform.position.y, Point2.transform.position.z);
+		//m_rigidBody.velocity = new Vector3(m_movementSpeed, 0.0f, 0.0f);
     }
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.CompareTag("ChangeEnemyDirection"))
-		{
-			m_rigidBody.velocity = -m_rigidBody.velocity;
-		}
-	}
+	void Update(){
 
-    // Update is called once per frame
-    void Update()
-    {
-
-		transform.position += m_rigidBody.velocity * m_movementSpeed * Time.deltaTime;
-
-		if ((this.gameObject.transform.position - Player.transform.position).sqrMagnitude < 50f){
-
-			Activate = true;
-		
-		}
-		else{
-			Activate = false;
-		}
-
-		if (Activate == true){
 		Position_Timer -= Time.deltaTime;
 
 		if (Position_Timer < 0){
 			Change_Point();
 			Position_Timer = 2f;
 		}
+
 	}
 
-		
-    }
-
 	void Change_Point(){
-	
+
 		Target_Point ++;
 
 		switch (Target_Point){
@@ -85,6 +60,5 @@ public class Change_Position : MonoBehaviour
 		}
 
 	}
-
 
 }

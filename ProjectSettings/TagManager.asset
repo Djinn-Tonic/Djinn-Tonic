@@ -13,6 +13,9 @@ TagManager:
   - Target
   - Ghoul
   - Platform
+  - GameManager
+  - Curse
+  - Behemoth
   layers:
   - Default
   - TransparentFX
