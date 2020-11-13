@@ -23,8 +23,12 @@ public class Player : MonoBehaviour
     private int m_pickUpCount;
     private Rigidbody m_rigidBody;
 
+	private bool Cursed;
+	private float Cursed_Timer;
+
     private void Awake()
     {
+
         m_rigidBody = GetComponent<Rigidbody>();
         Assert.IsNotNull(m_rigidBody);
 
@@ -33,6 +37,9 @@ public class Player : MonoBehaviour
 
         m_onLadder = false;
         m_pickUpCount = 0;
+
+
+		Cursed_Timer = 4f;
     }
 
     // Start is called before the first frame update
@@ -72,10 +79,23 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("PickUp"))
         {
             ++m_pickUpCount;
-            m_gameManager.onPlayerPickupCollection(m_pickUpCount);
+           // m_gameManager.onPlayerPickupCollection(m_pickUpCount);
             Destroy(other.gameObject);
             Debug.Log("PickUp Count: " + m_pickUpCount);
         }
+
+		if(other.gameObject.CompareTag("Curse"))
+		{
+			Cursed = true;
+			Destroy(other.gameObject);
+		}
+
+		if(other.gameObject.CompareTag("Behemoth"))
+		{
+				SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+		}
+
     }
 
     void OnTriggerExit(Collider other)
@@ -110,29 +130,54 @@ public class Player : MonoBehaviour
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && Cursed == false)
         {
             m_rigidBody.velocity += Vector3.right * movementSpeed;
-        }
-        if (Input.GetKey(KeyCode.A))
+		}else if (Input.GetKey(KeyCode.D) && Cursed == true){
+			m_rigidBody.velocity -= Vector3.right * movementSpeed;
+		}
+
+
+		if (Input.GetKey(KeyCode.A) && Cursed == false)
         {
             m_rigidBody.velocity -= Vector3.right * movementSpeed;
-        }
-        if(m_onLadder && Input.GetKey(KeyCode.W))
+		}else if (Input.GetKey(KeyCode.A) && Cursed == true){
+			m_rigidBody.velocity += Vector3.right * movementSpeed;
+		}
+
+		if(m_onLadder && Input.GetKey(KeyCode.W) && Cursed == false)
         {
             m_rigidBody.velocity += Vector3.up * m_verticalLadderMoveSpeed;
-        }
-        if(m_onLadder && Input.GetKey(KeyCode.S))
+		}else if (m_onLadder && Input.GetKey(KeyCode.W) && Cursed == true){
+			m_rigidBody.velocity -= Vector3.up * m_verticalLadderMoveSpeed;
+		}
+
+
+		if(m_onLadder && Input.GetKey(KeyCode.S) && Cursed == false)
         {
             m_rigidBody.velocity += Vector3.down * m_verticalLadderMoveSpeed;
-        }
-        if (m_platform && Input.GetKeyDown(KeyCode.Space))
+		}else if (m_onLadder && Input.GetKey(KeyCode.S) && Cursed == true){
+			m_rigidBody.velocity -= Vector3.down * m_verticalLadderMoveSpeed;
+		}
+
+
+		if (m_platform && Input.GetKeyDown(KeyCode.W))
         {
             m_rigidBody.AddForce(Vector3.up * m_jumpSpeed, ForceMode.Impulse);
-        }
+		}
+
 
         transform.position += m_rigidBody.velocity * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
         transform.rotation = Quaternion.identity;
+
+		if (Cursed == true){
+		
+			Cursed_Timer -= Time.deltaTime;
+			if (Cursed_Timer < 0){
+				Cursed = false;
+				Cursed_Timer = 4f;
+			}
+		}
     }
 }
