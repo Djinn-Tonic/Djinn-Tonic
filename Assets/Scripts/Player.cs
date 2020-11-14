@@ -164,7 +164,8 @@ public class Player : MonoBehaviour
 		if (m_platform && Input.GetKeyDown(KeyCode.W))
         {
             m_rigidBody.AddForce(Vector3.up * m_jumpSpeed, ForceMode.Impulse);
-		}
+            m_platform = null;
+        }
 
 
         transform.position += m_rigidBody.velocity * Time.deltaTime;
