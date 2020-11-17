@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rotationSpeed: 50
-  m_jumpHeightIncreaseAmount: 0.25
+  m_jumpHeightModifier: 2
