@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class SpeedPickUp : PickUp
+public class JumpHeightPickup : PickUp
 {
     [SerializeField]
-    private float m_speedIncreaseAmount = 0.25f;
+    private float m_jumpHeightIncreaseAmount = 0.25f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class SpeedPickUp : PickUp
         {
             Player player = other.gameObject.GetComponent<Player>();
             Assert.IsNotNull(player);
-            player.increaseSpeed(m_speedIncreaseAmount);
+            player.increaseJumpHeight(m_jumpHeightIncreaseAmount);
             Destroy(gameObject);
         }
     }
