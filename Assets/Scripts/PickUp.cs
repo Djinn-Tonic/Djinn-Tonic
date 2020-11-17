@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField]
-    private float m_rotationSpeed;
+    private float m_rotationSpeed = 50.0f;
 
     // Start is called before the first frame update
     void Start()

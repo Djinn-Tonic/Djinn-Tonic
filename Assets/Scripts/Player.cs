@@ -48,6 +48,16 @@ public class Player : MonoBehaviour
         Debug.Log("Health: " + m_health);
     }
 
+    public void increaseSpeed(float amount)
+    {
+        m_movementSpeed += amount;
+    }
+
+    public void increaseJumpHeight(float amount)
+    {
+        m_jumpSpeed += amount;
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Platform"))
