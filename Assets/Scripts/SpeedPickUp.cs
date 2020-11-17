@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 public class SpeedPickUp : PickUp
 {
     [SerializeField]
-    private float m_speedIncreaseAmount = 0.25f;
+    private float m_playerSpeedModifier = 0.25f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class SpeedPickUp : PickUp
         {
             Player player = other.gameObject.GetComponent<Player>();
             Assert.IsNotNull(player);
-            player.increaseSpeed(m_speedIncreaseAmount);
+            player.modifySpeed(m_playerSpeedModifier);
             Destroy(gameObject);
         }
     }
