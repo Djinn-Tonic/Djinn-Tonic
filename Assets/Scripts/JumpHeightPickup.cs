@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 public class JumpHeightPickup : PickUp
 {
     [SerializeField]
-    private float m_jumpHeightIncreaseAmount = 0.25f;
+    private float m_jumpHeightModifier = 0.25f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class JumpHeightPickup : PickUp
         {
             Player player = other.gameObject.GetComponent<Player>();
             Assert.IsNotNull(player);
-            player.increaseJumpHeight(m_jumpHeightIncreaseAmount);
+            player.modifyJumpHeight(m_jumpHeightModifier);
             Destroy(gameObject);
         }
     }

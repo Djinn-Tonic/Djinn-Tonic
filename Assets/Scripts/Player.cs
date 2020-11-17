@@ -48,12 +48,12 @@ public class Player : MonoBehaviour
         Debug.Log("Health: " + m_health);
     }
 
-    public void increaseSpeed(float amount)
+    public void modifySpeed(float amount)
     {
         m_movementSpeed += amount;
     }
 
-    public void increaseJumpHeight(float amount)
+    public void modifyJumpHeight(float amount)
     {
         m_jumpSpeed += amount;
     }
