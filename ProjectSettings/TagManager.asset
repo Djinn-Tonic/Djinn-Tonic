@@ -16,6 +16,7 @@ TagManager:
   - GameManager
   - Curse
   - Behemoth
+  - Obstacle
   layers:
   - Default
   - TransparentFX

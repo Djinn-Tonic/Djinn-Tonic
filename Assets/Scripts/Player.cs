@@ -106,6 +106,11 @@ public class Player : MonoBehaviour
 
 		}
 
+		if (other.gameObject.CompareTag("Obstacle"))
+		{
+				SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+		}
+
     }
 
     void OnTriggerExit(Collider other)
